@@ -65,9 +65,9 @@ function all(list) {
             done(null, result)
             return
         }
-        list.forEach(function (index) {
+        list.forEach(function (value, index) {
             if (result === null) { return }
-            wait(list[key], function (err, val) {
+            wait(value, function (err, val) {
                 if (result === null) { return }
                 if (err) {
                     result = null
