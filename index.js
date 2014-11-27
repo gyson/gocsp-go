@@ -95,18 +95,18 @@ function wrap(fn) {
 exports.wrap = wrap
 
 // es7 async function
-// function async(fn) {
-//     if (!Promise) {
-//         throw new Error('Cannot find Promise')
-//     }
-//     if (!isGeneratorFunction(fn)) {
-//         throw new TypeError(fn + ' is not generator function')
-//     }
-//     return function () {
-//         return new Promise(go(fn.apply(this, arguments)))
-//     }
-// }
-// exports.async = async
+function async(fn) {
+    if (!Promise) {
+        throw new Error('Cannot find Promise')
+    }
+    if (!isGeneratorFunction(fn)) {
+        throw new TypeError(fn + ' is not generator function')
+    }
+    return function () {
+        return new Promise(go(fn.apply(this, arguments)))
+    }
+}
+exports.async = async
 
 function isGenerator(obj) {
     return Object.prototype.toString.call(obj) === '[object Generator]'
